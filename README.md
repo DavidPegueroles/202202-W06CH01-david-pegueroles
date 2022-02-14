@@ -5,7 +5,10 @@
 - App
 
   - Renderizar un listado de tareas.
-  - Pasarle a Task la tarea a renderizar, una acción para ejecutar, y una acción para que pase al componente Button.
+  - Obtener el listado de tareas.
+  - Pasar a Task la tarea a renderizar, una acción de toggle para cambiar una tarea a Done y viceversa, y pasar una acción de delete para eliminar una tarea.
+  - Pasar a Form la función a ejecutar "onSubmit" y "onChange".
+  - Pasar a Stats el número de tareas completadas y las que faltan por completar.
 
 - Task
 
@@ -21,7 +24,7 @@
 - Form
 
   - Renderizar un formulario para crear tareas.
-  - Ejecutar una acción en el submit.
+  - Ejecutar una acción en "onSubmit" y otra "onChange".
 
 - Stats
   - Renderizar un texto con el número de tareas completadas y las que faltn por completar.
