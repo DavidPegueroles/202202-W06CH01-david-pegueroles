@@ -1,5 +1,8 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Task from "./components/Task/Task";
+import { loadTasksThunk } from "./redux/thunks/tasksThunks";
 
 const Section = styled.section`
   display: flex;
@@ -21,18 +24,14 @@ const ToDoList = styled.ul`
 `;
 
 function App() {
-  const toDo = [
-    {
-      id: 1,
-      name: "Do something",
-      done: true,
-    },
-    {
-      id: 2,
-      name: "Do something else",
-      done: false,
-    },
-  ];
+  const dispatch = useDispatch();
+
+  const toDo = useSelector((state) => state.tasks);
+  console.log(toDo);
+
+  useEffect(() => {
+    dispatch(loadTasksThunk);
+  }, [dispatch]);
 
   return (
     <>
