@@ -4,6 +4,7 @@ const DeleteButton = styled.button`
   font-size: 35px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 
 const Button = ({ actionOnClick }) => {

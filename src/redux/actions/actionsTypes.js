@@ -1,7 +1,7 @@
 const actionsTypes = {
   loadTasks: "load-tasks",
-  deleteTasks: "delete-task",
-  toggleTasks: "toggle-task",
+  deleteTask: "delete-task",
+  toggleTask: "toggle-task",
 };
 
 export default actionsTypes;

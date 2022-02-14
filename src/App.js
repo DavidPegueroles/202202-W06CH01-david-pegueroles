@@ -2,14 +2,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Task from "./components/Task/Task";
-import { loadTasksThunk } from "./redux/thunks/tasksThunks";
+import { deleteTaskThunk, loadTasksThunk } from "./redux/thunks/tasksThunks";
 
 const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  border: 1px solid red;
   width: 70vw;
 `;
 
@@ -20,14 +19,16 @@ const ToDoList = styled.ul`
   align-items: flex-start;
   margin: 0;
   padding: 0;
-  border: 1px solid yellowgreen;
 `;
 
 function App() {
   const dispatch = useDispatch();
 
   const toDo = useSelector((state) => state.tasks);
-  console.log(toDo);
+
+  const deleteTask = (id) => {
+    dispatch(deleteTaskThunk(id));
+  };
 
   useEffect(() => {
     dispatch(loadTasksThunk);
@@ -39,7 +40,13 @@ function App() {
       <Section>
         <ToDoList>
           {toDo.map((task) => (
-            <Task key={task.id} task={task} />
+            <Task
+              key={task.id}
+              task={task}
+              actionOnClick={() => {
+                deleteTask(task.id);
+              }}
+            />
           ))}
         </ToDoList>
       </Section>
