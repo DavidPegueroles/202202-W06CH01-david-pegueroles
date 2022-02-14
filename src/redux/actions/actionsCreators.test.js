@@ -1,4 +1,4 @@
-import { loadTasksAction } from "./actionsCreators";
+import { deleteTaskAction, loadTasksAction } from "./actionsCreators";
 import actionsTypes from "./actionsTypes";
 
 describe("Given a loadTasksAction function", () => {
@@ -23,6 +23,23 @@ describe("Given a loadTasksAction function", () => {
       };
 
       const action = loadTasksAction(tasks);
+
+      expect(expectedAction).toEqual(action);
+    });
+  });
+});
+
+describe("Given a deleteTaskAction function", () => {
+  describe("When it receives id 1", () => {
+    test("Then it should return action with id 1", () => {
+      const id = 1;
+
+      const expectedAction = {
+        type: actionsTypes.deleteTask,
+        id,
+      };
+
+      const action = deleteTaskAction(id);
 
       expect(expectedAction).toEqual(action);
     });
