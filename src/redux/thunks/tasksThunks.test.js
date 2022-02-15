@@ -12,9 +12,9 @@ describe("Given a loadTasksThunk function", () => {
   });
 });
 
-describe("Given a addTaskThunk inner function", () => {
-  describe("When it is called", () => {
-    test("Then it should add one tast given to the state", async () => {
+describe("Given a deleteTaskThunk inner function", () => {
+  describe("When it is called with id 1", () => {
+    test("Then it should call the dispatch and add one task given to the state", async () => {
       const dispatch = jest.fn();
       const id = 1;
 
@@ -23,6 +23,19 @@ describe("Given a addTaskThunk inner function", () => {
       await deleteThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it is called with id 3", () => {
+    test("Then it should not call the dispatch", async () => {
+      const dispatch = jest.fn();
+      const id = 3;
+
+      const deleteThunk = deleteTaskThunk(id);
+
+      await deleteThunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });
