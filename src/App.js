@@ -1,15 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import Form from "./components/Form/Form";
 import Task from "./components/Task/Task";
 import { deleteTaskThunk, loadTasksThunk } from "./redux/thunks/tasksThunks";
+
+const Title = styled.h1`
+  margin-top: 50px;
+  margin-bottom: 40px;
+`;
 
 const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 70vw;
+  width: 80vw;
+  color: white;
 `;
 
 const ToDoList = styled.ul`
@@ -36,7 +43,12 @@ function App() {
 
   return (
     <>
-      <h1>ToDo List</h1>
+      <Title>ToDo List</Title>
+
+      <Section>
+        <Form />
+      </Section>
+
       <Section>
         <ToDoList>
           {toDo.map((task) => (

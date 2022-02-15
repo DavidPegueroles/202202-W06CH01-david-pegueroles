@@ -5,9 +5,10 @@ const TaskLi = styled.li`
   font-size: 30px;
   list-style: none;
   margin: 10px;
+
   a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
   .done {
     text-decoration: line-through;
