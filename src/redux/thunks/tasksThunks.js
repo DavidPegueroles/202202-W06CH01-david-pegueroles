@@ -14,5 +14,4 @@ export const deleteTaskThunk = (id) => async (dispatch) => {
   if (response.ok) {
     dispatch(deleteTaskAction(id));
   }
-  return;
 };
