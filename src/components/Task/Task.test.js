@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import Task from "./Task";
 
 describe("Given a Task component", () => {
-  describe("When it receives tasks 'Do something'", () => {
+  describe("When it receives task 'Do something'", () => {
     test("Then it should display a link with the text 'Do something'", () => {
       const task = [
         {

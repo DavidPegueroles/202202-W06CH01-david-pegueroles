@@ -2,6 +2,7 @@ import {
   createTaskThunk,
   deleteTaskThunk,
   loadTasksThunk,
+  toggleTaskThunk,
 } from "./tasksThunks";
 
 describe("Given a loadTasksThunk function", () => {
@@ -57,6 +58,25 @@ describe("Given a createTaskThunk function", () => {
       const createTask = createTaskThunk(task);
 
       await createTask(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a toggleTaskThunk function", () => {
+  describe("When it is called with an id", () => {
+    test("Then it should dispatch a function", async () => {
+      const dispatch = jest.fn();
+      const task = {
+        name: "Do something please",
+        done: "false",
+        id: 3,
+      };
+
+      const toggleTask = toggleTaskThunk(task);
+
+      await toggleTask(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });

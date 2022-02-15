@@ -14,3 +14,8 @@ export const createTaskAction = (task) => ({
   type: actionsTypes.createTask,
   task,
 });
+
+export const toggleTaskAction = (id) => ({
+  type: actionsTypes.toggleTask,
+  id,
+});

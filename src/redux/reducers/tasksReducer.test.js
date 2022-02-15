@@ -98,6 +98,28 @@ describe("Given a tasksReducer function", () => {
     });
   });
 
+  describe("When it receives task with 'id: 1' & 'done: false', and action with 'id: 1'", () => {
+    test("Then it should return the task with done property to true", () => {
+      const currentState = [
+        {
+          id: 1,
+          name: "Do something",
+          done: false,
+        },
+      ];
+
+      const id = 1;
+
+      const action = {
+        type: actionsTypes.toggleTask,
+        id,
+      };
+      const newState = tasksReducer(currentState, action);
+
+      expect(newState[0].done).toBe(true);
+    });
+  });
+
   describe("When it receives currentTasks and a non existing action with tasks 'Do something' and 'Do something else'", () => {
     test("Then it should return currentTasks", () => {
       const currentTasks = [];

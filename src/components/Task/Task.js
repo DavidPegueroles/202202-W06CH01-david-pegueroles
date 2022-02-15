@@ -12,14 +12,25 @@ const TaskLi = styled.li`
   }
   .done {
     text-decoration: line-through;
+    color: #3e6880;
   }
 `;
 
-const Task = ({ task: { name, done }, actionOnClick }) => {
+const Task = ({ task: { name, done }, actionOnClick, toggle }) => {
+  const toggleOnClick = (event) => {
+    event.preventDefault();
+    toggle();
+  };
+
   return (
     <TaskLi>
       <Button actionOnClick={actionOnClick} />
-      <a title="Do something" href="toggle">
+      <a
+        title="Do something"
+        href="toggle"
+        className={done ? "done" : ""}
+        onClick={toggleOnClick}
+      >
         {name}
       </a>
     </TaskLi>

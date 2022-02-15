@@ -2,6 +2,7 @@ import {
   createTaskAction,
   deleteTaskAction,
   loadTasksAction,
+  toggleTaskAction,
 } from "./actionsCreators";
 import actionsTypes from "./actionsTypes";
 
@@ -61,6 +62,23 @@ describe("Given a createTaskAction function", () => {
       };
 
       const action = createTaskAction(task);
+
+      expect(expectedAction).toEqual(action);
+    });
+  });
+});
+
+describe("Given a toggleTaskAction function", () => {
+  describe("When it receives id 1", () => {
+    test("Then it should return action with id 1", () => {
+      const id = 1;
+
+      const expectedAction = {
+        type: actionsTypes.toggleTask,
+        id,
+      };
+
+      const action = toggleTaskAction(id);
 
       expect(expectedAction).toEqual(action);
     });

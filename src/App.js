@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Form from "./components/Form/Form";
 import Task from "./components/Task/Task";
-import { deleteTaskThunk, loadTasksThunk } from "./redux/thunks/tasksThunks";
+import {
+  deleteTaskThunk,
+  loadTasksThunk,
+  toggleTaskThunk,
+} from "./redux/thunks/tasksThunks";
 
 const Title = styled.h1`
   margin-top: 50px;
@@ -37,6 +41,11 @@ function App() {
     dispatch(deleteTaskThunk(id));
   };
 
+  const toggleTask = (task) => {
+    task.done = !task.done;
+    dispatch(toggleTaskThunk(task));
+  };
+
   useEffect(() => {
     dispatch(loadTasksThunk);
   }, [dispatch]);
@@ -57,6 +66,9 @@ function App() {
               task={task}
               actionOnClick={() => {
                 deleteTask(task.id);
+              }}
+              toggle={() => {
+                toggleTask(task);
               }}
             />
           ))}

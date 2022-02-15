@@ -2,6 +2,7 @@ import {
   createTaskAction,
   deleteTaskAction,
   loadTasksAction,
+  toggleTaskAction,
 } from "../actions/actionsCreators";
 
 export const loadTasksThunk = async (dispatch) => {
@@ -30,4 +31,16 @@ export const createTaskThunk = (task) => async (dispatch) => {
   });
   const newTask = await response.json();
   dispatch(createTaskAction(newTask));
+};
+
+export const toggleTaskThunk = (task) => async (dispatch) => {
+  const response = await fetch(`${process.env.REACT_APP_API}${task.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(task),
+  });
+  const newTask = await response.json();
+  dispatch(toggleTaskAction(newTask));
 };

@@ -13,6 +13,11 @@ const tasksReducer = (tasks = [], action = {}) => {
     case actionsTypes.createTask:
       newTasks = [...tasks, action.task];
       break;
+    case actionsTypes.toggleTask:
+      newTasks = tasks.map((task) =>
+        task.id === action.id ? { ...task, done: !task.done } : { ...task }
+      );
+      break;
     default:
       newTasks = [...tasks];
   }
