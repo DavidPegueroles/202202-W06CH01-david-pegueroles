@@ -14,7 +14,7 @@ describe("Given a loadTasksThunk function", () => {
 
 describe("Given a deleteTaskThunk inner function", () => {
   describe("When it is called with id 1", () => {
-    test("Then it should call the dispatch and add one task given to the state", async () => {
+    test("Then it should call the dispatch", async () => {
       const dispatch = jest.fn();
       const id = 1;
 
