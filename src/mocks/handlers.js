@@ -36,4 +36,14 @@ export const handlers = [
       })
     )
   ),
+  rest.patch(`${process.env.REACT_APP_API}1`, (req, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        name: "Do something please",
+        done: "true",
+        id: 1,
+      })
+    )
+  ),
 ];
